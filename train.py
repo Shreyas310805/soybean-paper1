@@ -170,8 +170,7 @@ def _callbacks(slug: str) -> List[keras.callbacks.Callback]:
             restore_best_weights=True, verbose=1),
         keras.callbacks.ModelCheckpoint(
             filepath=str(ckpt), monitor=config.MONITOR_METRIC,
-            mode=config.MONITOR_MODE, save_best_only=True, verbose=0,
-            save_weights_only=True),
+            mode=config.MONITOR_MODE, save_best_only=True, verbose=0),
         keras.callbacks.ReduceLROnPlateau(
             monitor=config.MONITOR_METRIC, mode=config.MONITOR_MODE,
             factor=config.REDUCE_LR_FACTOR, patience=config.REDUCE_LR_PATIENCE,
@@ -311,8 +310,6 @@ def main() -> None:
                         help="Resume: skip models already in saved_models/.")
     parser.add_argument("--mixed-precision", action="store_true",
                         default=config.MIXED_PRECISION)
-    parser.add_argument("--seed", type=int, default=None,
-                        help="Override config.RANDOM_SEED for this run.")
     parser.add_argument("--seed", type=int, default=None,
                         help="Override config.RANDOM_SEED for this run.")
     parser.add_argument("--summary", action="store_true")
