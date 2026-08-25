@@ -121,6 +121,8 @@ def _preprocessing_layers(slug: str, handles_scaling: bool) -> List[layers.Layer
     """Model-specific ImageNet normalisation as serialisable layers."""
     if handles_scaling:
         return []
+    if slug == "efficientnetb0":
+        return []
     if slug in {"mobilenetv2", "mobilenetv3_small"}:
         return [layers.Rescaling(1.0 / 127.5, offset=-1.0, name="preprocess")]
     return [
@@ -246,7 +248,7 @@ def train_one(slug: str, args: argparse.Namespace) -> dict:
 
     # Final model -> Drive (persistent).
     out_path = config.SAVED_MODELS_DIR / f"{slug}.keras"
-    model.save(out_path)
+    model.save(out_path, include_optimizer=False)
     with open(config.HISTORY_DIR / f"{slug}_history.json", "w",
               encoding="utf-8") as fh:
         json.dump({k: [float(x) for x in v] for k, v in hist.items()}, fh, indent=2)
