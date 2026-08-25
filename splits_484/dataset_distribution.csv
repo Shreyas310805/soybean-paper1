@@ -1,0 +1,10 @@
+Class,Training Images,Validation Images,Testing Images,Total
+bacterial_blight,339,73,72,484
+cercospora_leaf_blight,339,73,72,484
+downey_mildew,339,73,72,484
+frogeye,339,73,72,484
+healthy,339,73,72,484
+potassium_deficiency,339,73,72,484
+soybean_rust,339,73,72,484
+target_spot,339,73,72,484
+TOTAL,2712,584,576,3872
