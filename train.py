@@ -211,7 +211,7 @@ def train_one(slug: str, args: argparse.Namespace) -> dict:
 
     keras.backend.clear_session()
     gc.collect()
-    set_global_seeds()
+    set_global_seeds(args.seed if args.seed is not None else config.RANDOM_SEED)
 
     train_ds = data_loader.make_dataset("train", batch_size=args.batch_size)
     val_ds = data_loader.make_dataset("val", batch_size=args.batch_size)
@@ -310,6 +310,8 @@ def main() -> None:
                         help="Resume: skip models already in saved_models/.")
     parser.add_argument("--mixed-precision", action="store_true",
                         default=config.MIXED_PRECISION)
+    parser.add_argument("--seed", type=int, default=None,
+                        help="Override config.RANDOM_SEED for this run.")
     parser.add_argument("--summary", action="store_true")
     args = parser.parse_args()
 
