@@ -1,0 +1,2 @@
+Model,bacterial_blight,cercospora_leaf_blight,downey_mildew,frogeye,healthy,potassium_deficiency,soybean_rust,target_spot
+DenseNet121,0.97222,0.91667,0.94444,0.70833,0.79167,0.94444,0.86111,0.94444

@@ -1,0 +1,5 @@
+Model Format,Size (MB),Compression,Inference Time (ms),Accuracy,Macro-F1,Accuracy Drop (pp),Macro-F1 Drop (pp)
+FP32 (Keras),43.881,1.00x,96.558,0.88542,0.88488,0.0,0.0
+TFLite FP32,26.643,1.65x,84.406,0.88542,0.88488,0.0,0.0
+TFLite Dynamic,7.078,6.20x,112.219,0.88889,0.88807,-0.347,-0.319
+TFLite INT8,7.021,6.25x,106.528,0.42014,0.40061,46.528,48.427

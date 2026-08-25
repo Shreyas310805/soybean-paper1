@@ -1,0 +1,2 @@
+Model,Parameters,Model Size (MB),CPU Inference Time (ms),Std (ms),Macro-F1
+DenseNet121,7045704,43.881,97.582,4.317,0.88488

@@ -1,0 +1,2 @@
+model,slug,epochs_run,best_epoch,best_val_loss,best_val_accuracy,train_time_sec,total_params,batch_size,saved_to
+DenseNet121,densenet121,42,39,0.25281,0.91267,950.8,7045704,32,/kaggle/working/artifacts_ft42/saved_models/densenet121.keras

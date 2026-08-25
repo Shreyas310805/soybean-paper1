@@ -1,0 +1,28 @@
+[
+  {
+    "accuracy": 0.88542,
+    "precision_macro": 0.88532,
+    "recall_macro": 0.88542,
+    "macro_f1": 0.88488,
+    "per_class_recall": {
+      "bacterial_blight": 0.97222,
+      "cercospora_leaf_blight": 0.91667,
+      "downey_mildew": 0.94444,
+      "frogeye": 0.70833,
+      "healthy": 0.79167,
+      "potassium_deficiency": 0.94444,
+      "soybean_rust": 0.86111,
+      "target_spot": 0.94444
+    },
+    "total_params": 7045704,
+    "trainable_params": 2035720,
+    "non_trainable_params": 5009984,
+    "model": "DenseNet121",
+    "slug": "densenet121",
+    "model_size_mb": 43.881,
+    "test_images": 576,
+    "inference_ms_mean": 97.582,
+    "inference_ms_std": 4.317,
+    "inference_ms_p95": 102.38
+  }
+]

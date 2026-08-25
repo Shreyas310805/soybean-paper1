@@ -1,0 +1,2 @@
+Model,Accuracy,Precision,Recall,Macro-F1
+DenseNet121,0.88542,0.88532,0.88542,0.88488

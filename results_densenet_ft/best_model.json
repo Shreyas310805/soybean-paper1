@@ -1,0 +1,16 @@
+{
+  "best_by_macro_f1": {
+    "slug": "densenet121",
+    "model": "DenseNet121",
+    "macro_f1": 0.88488,
+    "accuracy": 0.88542
+  },
+  "best_accuracy_efficiency_tradeoff": {
+    "slug": "densenet121",
+    "model": "DenseNet121",
+    "macro_f1": 0.88488,
+    "model_size_mb": 43.881,
+    "inference_ms_mean": 97.582,
+    "rule": "smallest model within 1.0 pp macro-F1 of the top score"
+  }
+}

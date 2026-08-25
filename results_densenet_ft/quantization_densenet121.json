@@ -1,0 +1,91 @@
+{
+  "model": "DenseNet121",
+  "class_names": [
+    "bacterial_blight",
+    "cercospora_leaf_blight",
+    "downey_mildew",
+    "frogeye",
+    "healthy",
+    "potassium_deficiency",
+    "soybean_rust",
+    "target_spot"
+  ],
+  "rows": [
+    {
+      "format": "FP32 (Keras)",
+      "size_mb": 43.881,
+      "accuracy": 0.88542,
+      "macro_f1": 0.88488,
+      "per_class_recall": [
+        0.97222,
+        0.91667,
+        0.94444,
+        0.70833,
+        0.79167,
+        0.94444,
+        0.86111,
+        0.94444
+      ],
+      "inference_ms_mean": 96.558,
+      "inference_ms_std": 4.452,
+      "inference_ms_p95": 101.623
+    },
+    {
+      "format": "TFLite FP32",
+      "size_mb": 26.643,
+      "accuracy": 0.88542,
+      "macro_f1": 0.88488,
+      "per_class_recall": [
+        0.97222,
+        0.91667,
+        0.94444,
+        0.70833,
+        0.79167,
+        0.94444,
+        0.86111,
+        0.94444
+      ],
+      "inference_ms_mean": 84.406,
+      "inference_ms_std": 2.943,
+      "inference_ms_p95": 88.211
+    },
+    {
+      "format": "TFLite Dynamic",
+      "size_mb": 7.078,
+      "accuracy": 0.88889,
+      "macro_f1": 0.88807,
+      "per_class_recall": [
+        0.98611,
+        0.91667,
+        0.94444,
+        0.72222,
+        0.79167,
+        0.94444,
+        0.86111,
+        0.94444
+      ],
+      "inference_ms_mean": 112.219,
+      "inference_ms_std": 3.005,
+      "inference_ms_p95": 116.392
+    },
+    {
+      "format": "TFLite INT8",
+      "size_mb": 7.021,
+      "accuracy": 0.42014,
+      "macro_f1": 0.40061,
+      "per_class_recall": [
+        0.16667,
+        0.41667,
+        0.11111,
+        0.55556,
+        0.875,
+        0.27778,
+        0.77778,
+        0.18056
+      ],
+      "inference_ms_mean": 106.528,
+      "inference_ms_std": 2.839,
+      "inference_ms_p95": 110.283
+    }
+  ]
+}
