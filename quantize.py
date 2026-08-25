@@ -128,6 +128,16 @@ def make_representative_dataset(n_samples: int = config.REPRESENTATIVE_SAMPLES):
     return generator
 
 
+def convert_dynamic(model: keras.Model, slug: str) -> Path:
+    converter = _converter_for(model, slug)
+    converter.optimizations = [tf.lite.Optimize.DEFAULT]
+    tflite_bytes = converter.convert()
+    out = config.TFLITE_DIR / f"{slug}_dynamic.tflite"
+    out.write_bytes(tflite_bytes)
+    print(f"[quant] TFLite dynamic-range -> {out} ({file_size_mb(out)} MB)")
+    return out
+
+
 def convert_int8(model: keras.Model, slug: str,
                  n_samples: int = config.REPRESENTATIVE_SAMPLES) -> Path:
     converter = _converter_for(model, slug)
@@ -322,6 +332,7 @@ def main() -> None:
     model = keras.models.load_model(model_path, compile=False)
 
     fp32_path = convert_fp32(model, slug)
+    dyn_path = convert_dynamic(model, slug)
     int8_path = convert_int8(model, slug, args.samples)
 
     rows: List[dict] = []
@@ -345,7 +356,8 @@ def main() -> None:
     del model
     keras.backend.clear_session()
 
-    for label, path in [("TFLite FP32", fp32_path), ("TFLite INT8", int8_path)]:
+    for label, path in [("TFLite FP32", fp32_path), ("TFLite Dynamic", dyn_path),
+                       ("TFLite INT8", int8_path)]:
         print(f"\n[quant] Benchmarking {label} ({args.threads} thread(s))...")
         y_true, y_pred, stats = run_tflite(path, limit=args.limit,
                                            threads=args.threads)
