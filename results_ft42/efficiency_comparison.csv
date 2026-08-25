@@ -1,0 +1,4 @@
+Model,Parameters,Model Size (MB),CPU Inference Time (ms),Std (ms),Macro-F1
+MobileNetV2,2268232,21.994,24.754,1.196,0.89353
+MobileNetV3-Small,943736,9.596,10.635,0.469,0.86583
+DenseNet121,7045704,43.881,79.034,5.87,0.89513

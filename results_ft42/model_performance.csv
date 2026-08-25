@@ -1,0 +1,4 @@
+Model,Accuracy,Precision,Recall,Macro-F1
+MobileNetV2,0.8941,0.89856,0.8941,0.89353
+MobileNetV3-Small,0.86979,0.86708,0.86979,0.86583
+DenseNet121,0.89583,0.89549,0.89583,0.89513

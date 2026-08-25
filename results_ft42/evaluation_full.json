@@ -1,0 +1,80 @@
+[
+  {
+    "accuracy": 0.8941,
+    "precision_macro": 0.89856,
+    "recall_macro": 0.8941,
+    "macro_f1": 0.89353,
+    "per_class_recall": {
+      "bacterial_blight": 0.97222,
+      "cercospora_leaf_blight": 0.76389,
+      "downey_mildew": 0.97222,
+      "frogeye": 0.80556,
+      "healthy": 0.79167,
+      "potassium_deficiency": 1.0,
+      "soybean_rust": 0.90278,
+      "target_spot": 0.94444
+    },
+    "total_params": 2268232,
+    "trainable_params": 1673608,
+    "non_trainable_params": 594624,
+    "model": "MobileNetV2",
+    "slug": "mobilenetv2",
+    "model_size_mb": 21.994,
+    "test_images": 576,
+    "inference_ms_mean": 24.754,
+    "inference_ms_std": 1.196,
+    "inference_ms_p95": 26.734
+  },
+  {
+    "accuracy": 0.86979,
+    "precision_macro": 0.86708,
+    "recall_macro": 0.86979,
+    "macro_f1": 0.86583,
+    "per_class_recall": {
+      "bacterial_blight": 0.97222,
+      "cercospora_leaf_blight": 0.84722,
+      "downey_mildew": 0.95833,
+      "frogeye": 0.61111,
+      "healthy": 0.70833,
+      "potassium_deficiency": 0.98611,
+      "soybean_rust": 0.90278,
+      "target_spot": 0.97222
+    },
+    "total_params": 943736,
+    "trainable_params": 712592,
+    "non_trainable_params": 231144,
+    "model": "MobileNetV3-Small",
+    "slug": "mobilenetv3_small",
+    "model_size_mb": 9.596,
+    "test_images": 576,
+    "inference_ms_mean": 10.635,
+    "inference_ms_std": 0.469,
+    "inference_ms_p95": 11.332
+  },
+  {
+    "accuracy": 0.89583,
+    "precision_macro": 0.89549,
+    "recall_macro": 0.89583,
+    "macro_f1": 0.89513,
+    "per_class_recall": {
+      "bacterial_blight": 0.97222,
+      "cercospora_leaf_blight": 0.94444,
+      "downey_mildew": 0.95833,
+      "frogeye": 0.73611,
+      "healthy": 0.80556,
+      "potassium_deficiency": 0.95833,
+      "soybean_rust": 0.84722,
+      "target_spot": 0.94444
+    },
+    "total_params": 7045704,
+    "trainable_params": 2035720,
+    "non_trainable_params": 5009984,
+    "model": "DenseNet121",
+    "slug": "densenet121",
+    "model_size_mb": 43.881,
+    "test_images": 576,
+    "inference_ms_mean": 79.034,
+    "inference_ms_std": 5.87,
+    "inference_ms_p95": 95.966
+  }
+]

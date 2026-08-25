@@ -1,0 +1,14 @@
+                        precision    recall  f1-score   support
+
+      bacterial_blight     0.8537    0.9722    0.9091        72
+cercospora_leaf_blight     0.9104    0.8472    0.8777        72
+         downey_mildew     0.8519    0.9583    0.9020        72
+               frogeye     0.7458    0.6111    0.6718        72
+               healthy     0.8095    0.7083    0.7556        72
+  potassium_deficiency     1.0000    0.9861    0.9930        72
+          soybean_rust     0.8904    0.9028    0.8966        72
+           target_spot     0.8750    0.9722    0.9211        72
+
+              accuracy                         0.8698       576
+             macro avg     0.8671    0.8698    0.8658       576
+          weighted avg     0.8671    0.8698    0.8658       576
