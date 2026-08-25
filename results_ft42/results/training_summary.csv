@@ -1,0 +1,4 @@
+model,slug,epochs_run,best_epoch,best_val_loss,best_val_accuracy,train_time_sec,total_params,batch_size,saved_to
+MobileNetV2,mobilenetv2,40,36,0.35445,0.88527,681.4,2268232,32,/kaggle/working/artifacts_ft42/saved_models/mobilenetv2.keras
+MobileNetV3-Small,mobilenetv3_small,42,41,0.35567,0.86815,702.0,943736,32,/kaggle/working/artifacts_ft42/saved_models/mobilenetv3_small.keras
+DenseNet121,densenet121,42,40,0.22636,0.91952,859.7,7045704,32,/kaggle/working/artifacts_ft42/saved_models/densenet121.keras

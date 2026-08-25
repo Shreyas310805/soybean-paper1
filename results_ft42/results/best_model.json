@@ -1,0 +1,16 @@
+{
+  "best_by_macro_f1": {
+    "slug": "densenet121",
+    "model": "DenseNet121",
+    "macro_f1": 0.89513,
+    "accuracy": 0.89583
+  },
+  "best_accuracy_efficiency_tradeoff": {
+    "slug": "mobilenetv2",
+    "model": "MobileNetV2",
+    "macro_f1": 0.89353,
+    "model_size_mb": 21.994,
+    "inference_ms_mean": 24.754,
+    "rule": "smallest model within 1.0 pp macro-F1 of the top score"
+  }
+}
