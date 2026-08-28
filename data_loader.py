@@ -49,6 +49,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import inspect
 import json
 import random
 import shutil
@@ -486,13 +487,30 @@ def _decode(path: tf.Tensor, label: tf.Tensor):
     return img, label
 
 
+def _supports_value_range(layer_cls) -> bool:
+    return "value_range" in inspect.signature(layer_cls.__init__).parameters
+
+
 def build_augmenter(seed: int | None = None) -> tf.keras.Sequential:
-    """Geometric augmentation only; identical across all four models."""
+    """
+    Augmentation stack, applied to the training split only.
+
+    This deliberately lives in the tf.data pipeline rather than inside the
+    model. The exported model is converted to TFLite and benchmarked on a
+    Pi Zero 2 W, and random ops have no business in the graph being timed.
+
+    It runs on raw 0-255 images, before the model's own ImageNet
+    normalisation. RandomContrast and RandomBrightness can push values
+    outside that range, so both are given an explicit value_range and the
+    stack ends with a hard clip back to [0, 255].
+    """
     layers = tf.keras.layers
     seed = config.RANDOM_SEED if seed is None else seed
+    low, high = config.AUG_VALUE_RANGE
     stack = []
-    if config.AUG_HORIZONTAL_FLIP:
-        stack.append(layers.RandomFlip("horizontal", seed=seed))
+
+    if config.AUG_FLIP_MODE:
+        stack.append(layers.RandomFlip(config.AUG_FLIP_MODE, seed=seed))
     if config.AUG_ROTATION_FACTOR:
         stack.append(layers.RandomRotation(config.AUG_ROTATION_FACTOR,
                                            fill_mode="reflect", seed=seed))
@@ -503,6 +521,20 @@ def build_augmenter(seed: int | None = None) -> tf.keras.Sequential:
         stack.append(layers.RandomTranslation(config.AUG_TRANSLATION_FACTOR,
                                               config.AUG_TRANSLATION_FACTOR,
                                               fill_mode="reflect", seed=seed))
+    if config.AUG_CONTRAST_FACTOR:
+        kwargs = {"seed": seed}
+        if _supports_value_range(layers.RandomContrast):
+            kwargs["value_range"] = (low, high)
+        stack.append(layers.RandomContrast(config.AUG_CONTRAST_FACTOR, **kwargs))
+    if config.AUG_BRIGHTNESS_FACTOR:
+        kwargs = {"seed": seed}
+        if _supports_value_range(layers.RandomBrightness):
+            kwargs["value_range"] = (low, high)
+        stack.append(layers.RandomBrightness(config.AUG_BRIGHTNESS_FACTOR,
+                                             **kwargs))
+
+    stack.append(layers.Lambda(
+        lambda t: tf.clip_by_value(t, low, high), name="clip_to_value_range"))
     return tf.keras.Sequential(stack, name="augmentation")
 
 

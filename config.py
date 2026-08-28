@@ -217,21 +217,27 @@ SHUFFLE_BUFFER = 2048
 CACHE_TO_DISK = True            # False = RAM cache; Colab gives ~12 GB, so this
                                 # is only safe for small preprocessed datasets
 
-AUG_HORIZONTAL_FLIP = True
-AUG_ROTATION_FACTOR = 0.08
-AUG_ZOOM_FACTOR = 0.10
+AUG_FLIP_MODE = "horizontal_and_vertical"
+AUG_ROTATION_FACTOR = 0.15
+AUG_ZOOM_FACTOR = 0.15
 AUG_TRANSLATION_FACTOR = 0.10
+AUG_CONTRAST_FACTOR = 0.20
+AUG_BRIGHTNESS_FACTOR = 0.20
+AUG_VALUE_RANGE = (0.0, 255.0)
 
 # --------------------------------------------------------------------------- #
 # Training (guideline "Common Training Configuration")
 # --------------------------------------------------------------------------- #
-MAX_EPOCHS = 15
+HEAD_EPOCHS = 10
+FINE_TUNE_EPOCHS = 40
+MAX_EPOCHS = HEAD_EPOCHS
 OPTIMIZER = "adam"
 HEAD_LEARNING_RATE = 1e-3
-FINE_TUNE_LEARNING_RATE = 1e-5
-FINE_TUNE_EPOCHS = 0
-FINE_TUNE_UNFREEZE_RATIO = 0.25
+FINE_TUNE_LEARNING_RATE = 1e-4
+FINE_TUNE_UNFREEZE_RATIO = 0.35
+FINE_TUNE_WARMUP_EPOCHS = 2
 DROPOUT_RATE = 0.2
+LABEL_SMOOTHING = 0.05
 
 MONITOR_METRIC = "val_accuracy"
 MONITOR_MODE = "max"
@@ -240,7 +246,8 @@ REDUCE_LR_PATIENCE = 2
 REDUCE_LR_FACTOR = 0.5
 MIN_LR = 1e-6
 
-MIXED_PRECISION = False         # opt-in; see the warning in train.py
+MIXED_PRECISION = True
+MIXED_PRECISION_MIN_COMPUTE = 7.0
 
 # --------------------------------------------------------------------------- #
 # Model registry
