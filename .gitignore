@@ -1,4 +1,15 @@
-
 __pycache__/
 *.pyc
+*.pyo
+
 artifacts/
+runs/
+asdid_full/
+.scratch/
+
+*.keras
+*.tflite
+*.h5
+
+kaggle/
+/kaggle/
