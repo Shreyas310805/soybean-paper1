@@ -269,11 +269,18 @@ DISPLAY_NAMES = {
 # --------------------------------------------------------------------------- #
 # Benchmarking / quantization
 # --------------------------------------------------------------------------- #
-LATENCY_WARMUP_RUNS = 10
-LATENCY_MEASURED_RUNS = 100
+LATENCY_WARMUP_RUNS = 50
+LATENCY_MEASURED_RUNS = 200
 TFLITE_NUM_THREADS = 1          # 1 thread ~ single-core edge behaviour
+BENCH_NUM_THREADS = TFLITE_NUM_THREADS
 REPRESENTATIVE_SAMPLES = 200
 INT8_INPUT_DTYPE = "uint8"
+INT8_OUTPUT_DTYPE = "float32"
+
+SEEDS = (42, 1337, 2024)
+TARGET_MEAN_ACCURACY = 0.95
+TARGET_WORST_ACCURACY = 0.94
+DIAGNOSE_FLOOR = 0.93
 
 
 def ensure_dirs() -> None:

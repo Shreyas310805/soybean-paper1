@@ -641,9 +641,6 @@ def train_one(slug: str, args: argparse.Namespace,
     print(f"[train] model_inference.keras : {inference_mb:>8.3f} MB  "
           f"(REPORT THIS ONE - weights only, no optimizer)")
 
-    legacy_path = config.SAVED_MODELS_DIR / f"{slug}.keras"
-    export_inference_model(model, legacy_path)
-
     best_idx = int(np.argmax(hist["val_accuracy"]))
     record = {
         "model": config.display_name(slug),
